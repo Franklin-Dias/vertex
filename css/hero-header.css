@@ -1,0 +1,406 @@
+.container-header {
+  position: fixed;
+  z-index: 10;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding: 10px clamp(16px, 10vw, 120px);
+  border-bottom: 1px solid transparent;
+  background: transparent;
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0);
+  transition:
+    transform 300ms ease,
+    opacity 300ms ease,
+    background 300ms ease,
+    border-color 300ms ease,
+    box-shadow 300ms ease;
+}
+
+.container-header.is-scrolled {
+  border-bottom-color: color-mix(in srgb, var(--secundaria) 18%, transparent);
+  background: rgb(17 24 39 / 82%);
+  box-shadow: 0 12px 36px rgb(0 0 0 / 24%);
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0);
+  backdrop-filter: blur(18px) saturate(140%);
+  -webkit-backdrop-filter: blur(18px) saturate(140%);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .container-header {
+    transition: none;
+  }
+}
+
+.menu-d {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 80px;
+}
+
+.container-main {
+  --hero-background: #030617;
+  --hero-blue: 0 85 255;
+  --hero-violet: 117 36 255;
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 75%;
+  min-height: 680px;
+  padding-top: 148px;
+  margin: 0 auto;
+}
+
+.container-main::before,
+.container-main::after {
+  position: absolute;
+  z-index: -1;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  width: 100vw;
+  content: "";
+  transform: translateX(-50%);
+  pointer-events: none;
+}
+
+/* A base escura cobre o grid e encontra o fundo da proxima secao. */
+.container-main::before {
+  background:
+    radial-gradient(ellipse at 76% 78%, rgb(var(--hero-blue) / 24%), transparent 36%),
+    radial-gradient(ellipse at 93% 42%, rgb(var(--hero-violet) / 19%), transparent 35%),
+    radial-gradient(ellipse at 8% 35%, rgb(var(--hero-blue) / 10%), transparent 42%),
+    linear-gradient(to bottom, var(--hero-background) 78%, var(--primaria));
+}
+
+/* Feixes de luz inspirados na iluminacao azul e violeta do video. */
+.container-main::after {
+  background:
+    linear-gradient(125deg, transparent 58%, rgb(var(--hero-violet) / 4%) 62%, rgb(var(--hero-violet) / 30%) 62.3%, transparent 62.7%),
+    linear-gradient(55deg, transparent 61%, rgb(var(--hero-blue) / 5%) 65%, rgb(32 155 255 / 26%) 65.3%, transparent 65.7%);
+  filter: blur(3px);
+  -webkit-mask-image: linear-gradient(to bottom, transparent 6%, #000 28%, #000 65%, transparent 94%);
+  mask-image: linear-gradient(to bottom, transparent 6%, #000 28%, #000 65%, transparent 94%);
+}
+
+.container-list {
+  display: flex;
+  gap: 40px;
+  list-style: none;
+}
+.container-list a {
+  --menu-underline: 0;
+  position: relative;
+  display: inline-block;
+}
+
+.container-list a::after {
+  position: absolute;
+  right: 0;
+  bottom: -7px;
+  left: 0;
+  height: 2px;
+  border-radius: 2px;
+  background: linear-gradient(90deg, var(--secundaria), var(--terceira));
+  content: "";
+  pointer-events: none;
+  transform: scaleX(var(--menu-underline));
+  transform-origin: left center;
+}
+
+.container-list a:focus-visible {
+  outline: 2px solid var(--text);
+  outline-offset: 10px;
+  border-radius: 2px;
+}
+
+.logo {
+  width: 250px;
+  height: 100px;
+  object-fit: contain;
+}
+
+.hero {
+  position: relative;
+  display: grid;
+  place-items: center;
+  flex: 1 1 60%;
+  min-width: 0;
+  padding: 72px 0;
+  overflow: hidden;
+  text-align: left;
+}
+
+.container-hero {
+  width: min(920px, 100%);
+  margin: 0;
+}
+
+.pargrafo-hero {
+  margin-bottom: 24px;
+  color: var(--terceira);
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.title-hero {
+  margin-bottom: 24px;
+  color: var(--text);
+  font-size: 48px;
+  line-height: 1.08;
+  width: 90%;
+}
+
+.container-hero > p:last-child {
+  max-width: 500px;
+  margin: 0;
+  color: var(--text-color);
+  font-size: 1rem;
+  line-height: 1.7;
+}
+
+.btn-menu {
+  background: var(--secundaria);
+  padding: 16px 24px;
+  font: inherit;
+  font-weight: 700;
+  color: var(--text);
+  box-shadow: 0 0 28px color-mix(in srgb, var(--secundaria) 35%, transparent);
+  border-radius: 10px;
+}
+
+.btn-menu:hover {
+  background: var(--terceira);
+  transition: 1s ease-in-out;
+  box-shadow: 0 0 28px color-mix(in srgb, var(--terceira) 35%, transparent);
+}
+
+.btn-hero {
+  justify-self: start;
+  padding: 16px 24px;
+  margin-top: 32px;
+  border-radius: 10px;
+  color: var(--text);
+  background: var(--secundaria);
+  font: inherit;
+  font-weight: 700;
+  box-shadow: 0 0 28px color-mix(in srgb, var(--secundaria) 35%, transparent);
+}
+
+.hero + div {
+  position: relative;
+  isolation: isolate;
+  display: flex;
+  justify-content: space-between;
+  width: 40%;
+  padding: 0;
+  overflow: hidden;
+}
+
+.video-hero {
+  position: relative;
+  z-index: 0;
+  display: block;
+  width: min(100%, 600px);
+  height: auto;
+  background: transparent;
+  border-radius: 0;
+  border: none;
+  /* Desvanece as quatro bordas para integrar o video ao fundo. */
+  -webkit-mask-image: linear-gradient(to right, transparent, #111827 12%, #111827 88%, transparent),
+    linear-gradient(to bottom, transparent, #111827 12%, #111827 88%, transparent);
+  -webkit-mask-composite: source-in;
+  mask-image: linear-gradient(to right, transparent, #000 12%, #000 88%, transparent),
+    linear-gradient(to bottom, transparent, #000 12%, #000 88%, transparent);
+  mask-composite: intersect;
+}
+
+.btn-menu-mobile{
+  display: none;
+  background: var(--secundaria);
+  width: 44px;
+  height: 44px;
+  color: var(--text);
+  box-shadow: 0 0 28px color-mix(in srgb, var(--secundaria) 35%, transparent);
+  border-radius: 10px;
+}
+
+@media (max-width: 768px) {
+  /* Recorta apenas na horizontal sem criar outro container de rolagem. */
+  html,
+  body {
+    overflow-x: clip;
+    overflow-y: visible;
+  }
+
+  .container-header {
+    position: sticky;
+    z-index: 1000;
+    top: 0;
+    right: 0;
+    left: 0;
+    transform: none;
+    padding: 8px 12px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    height: 89px;
+    /* Preserva a hero por baixo do cabecalho transparente. */
+    margin-bottom: -89px;
+  }
+
+  .container-header.is-scrolled {
+    transform: none;
+    background: rgba(17, 24, 39, 0.82);
+    border-bottom-color: rgba(124, 58, 237, 0.18);
+    box-shadow: 0 12px 36px rgba(0, 0, 0, 0.24);
+    -webkit-backdrop-filter: blur(18px) saturate(140%);
+    backdrop-filter: blur(18px) saturate(140%);
+  }
+
+  .logo {
+    width: 150px;
+    height: 72px;
+  }
+
+  .menu-d {
+    display: none;
+  }
+
+  .container-list {
+    display: none;
+  }
+
+  .hero {
+    min-height: 580px;
+    padding-top: 36px;
+  }
+
+  .video-hero {
+    width: 100%;
+  }
+
+  .container-main {
+    padding-top: 112px;
+  }
+  .btn-menu-mobile{
+    display: block;
+
+  }
+  .btn-menu{
+    display: none;
+  }
+}
+
+@media (max-width: 900px) {
+  .container-main::before {
+    background:
+      radial-gradient(ellipse at 35% 76%, rgb(var(--hero-blue) / 24%), transparent 32%),
+      radial-gradient(ellipse at 90% 72%, rgb(var(--hero-violet) / 19%), transparent 30%),
+      linear-gradient(to bottom, var(--hero-background) 85%, var(--primaria));
+  }
+
+  .container-main::after {
+    top: 35%;
+    opacity: 0.65;
+  }
+
+  .container-main {
+    flex-direction: column;
+    gap: 16px;
+    min-height: auto;
+  }
+
+  .hero,
+  .hero + div {
+    width: 100%;
+    flex-basis: auto;
+  }
+
+  .hero + div {
+    justify-content: center;
+    padding-bottom: 80px;
+  }
+  
+}
+
+@media (max-width: 768px) {
+  .container-main {
+    width: 100%;
+    display: block;
+    padding: clamp(390px, 110vw, 540px) 24px 64px;
+    overflow: hidden;
+  }
+
+  .container-main::before {
+    background: linear-gradient(to bottom, var(--hero-background) 85%, var(--primaria));
+  }
+
+  .container-main::after {
+    display: none;
+  }
+
+  /* O video ocupa o fundo; o texto passa por cima da parte desvanecida. */
+  .hero + div {
+    position: absolute;
+    z-index: 0;
+    top: 72px;
+    left: 0;
+    width: 100%;
+    height: clamp(520px, 150vw, 760px);
+    padding: 0;
+    pointer-events: none;
+  }
+
+  .video-hero {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center top;
+     -webkit-mask-image: linear-gradient(to bottom, transparent, #000 8%, #000 38%, transparent 90%);
+    mask-image: linear-gradient(to bottom, transparent, #000 8%, #000 38%, transparent 90%);
+  }
+
+  .hero {
+    z-index: 1;
+    display: block;
+    min-height: 0;
+    padding: 0;
+    overflow: visible;
+  }
+
+  .pargrafo-hero {
+    margin-bottom: 20px;
+    color: #93b4ff;
+    font-size: 12px;
+    line-height: 1.6;
+    letter-spacing: 0.08em;
+  }
+
+  .title-hero {
+    width: 100%;
+    font-size: clamp(32px, 8.5vw, 48px);
+    line-height: 1.1;
+    text-shadow: 0 2px 18px rgb(3 6 23 / 65%);
+  }
+
+  .container-hero > p:last-child {
+    max-width: none;
+  }
+
+  .btn-hero {
+    max-width: 100%;
+  }
+}

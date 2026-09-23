@@ -1,0 +1,94 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: var(--font-family);
+}
+
+:root {
+  --primaria: #111827;
+  --secundaria: #7c3aed;
+  --terceira: #2563eb;
+  --text-color: #f3f4f6;
+  --text: #ffffff;
+
+  --font-family: "Sora", sans-serif;
+}
+
+html {
+  background: var(--primaria);
+}
+
+body {
+  position: relative;
+  min-height: 100vh;
+  overflow-x: hidden;
+  color: var(--text-color);
+  background:
+    radial-gradient(
+      circle at 50% 12%,
+      color-mix(in srgb, var(--secundaria) 28%, transparent),
+      transparent 28rem
+    ),
+    radial-gradient(
+      circle at 12% 42%,
+      color-mix(in srgb, var(--terceira) 18%, transparent),
+      transparent 24rem
+    ),
+    var(--primaria);
+}
+
+body::before {
+  position: fixed;
+  z-index: 0;
+  inset: 0;
+  content: "";
+  pointer-events: none;
+  opacity: 0.42;
+  background-image:
+    linear-gradient(
+      color-mix(in srgb, var(--terceira) 20%, transparent) 2px,
+      transparent 1px
+    ),
+    linear-gradient(
+      90deg,
+      color-mix(in srgb, var(--secundaria) 20%, transparent) 2px,
+      transparent 1px
+    );
+  background-position: center top;
+  background-size: 64px 64px;
+  mask-image: linear-gradient(to bottom, black, transparent 78%);
+  animation: move-grid 28s linear infinite;
+}
+
+@keyframes move-grid {
+  from {
+    background-position: center top;
+  }
+
+  to {
+    background-position: calc(50% + 64px) 64px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  body::before {
+    animation: none;
+  }
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  border: 0;
+  cursor: pointer;
+}
+
+.container-main {
+  position: relative;
+  z-index: 1;
+  isolation: isolate;
+}

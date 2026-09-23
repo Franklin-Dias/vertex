@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-labelledby="title desc">
+  <title id="title">Símbolo Vertex</title>
+  <desc id="desc">Logotipo geométrico em forma de V, com gradiente azul e violeta.</desc>
+
+  <defs>
+    <linearGradient id="vertex-main" x1="86" y1="86" x2="286" y2="424" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#1683FF"/>
+      <stop offset="0.48" stop-color="#3659F4"/>
+      <stop offset="1" stop-color="#7C3AED"/>
+    </linearGradient>
+
+    <linearGradient id="vertex-center" x1="211" y1="184" x2="326" y2="351" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#375EF5"/>
+      <stop offset="1" stop-color="#7C3AED"/>
+    </linearGradient>
+
+    <linearGradient id="vertex-wing" x1="311" y1="184" x2="428" y2="184" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#5B3FF0"/>
+      <stop offset="1" stop-color="#8B2FF3"/>
+    </linearGradient>
+  </defs>
+
+  <path fill="url(#vertex-main)" d="M78 92h72c11 0 20 5 26 15l139 241-48 83L78 92Z"/>
+  <path fill="url(#vertex-center)" d="M208 188h72c11 0 20 5 26 15l57 99-48 83-107-197Z"/>
+  <path fill="url(#vertex-wing)" d="M312 188l48-83c6-10 15-15 26-15h72l-98 181-48-83Z"/>
+</svg>
