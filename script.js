@@ -162,22 +162,35 @@ document.fonts.ready.then(() => {
 });
 
 gsap.registerPlugin(ScrollTrigger);
-gsap.utils.toArray(".container-itens").forEach((card, index) => {
-  gsap.from(card, {
-    opacity: 0,
-    y: 100,
-    scale: 0.8,
-    rotation: index % 2 === 0 ? -12 : 12,
-    ease: "none",
 
-    scrollTrigger: {
-      trigger: card,
-      start: "top 55%",
-      end: "top 10%",
-      scrub: 1,
-    },
-  });
-});
+const mm = gsap.matchMedia();
+
+mm.add(
+  {
+    mobile: "(max-width: 767px)",
+    desktop: "(min-width: 768px)",
+  },
+  (context) => {
+    const { mobile } = context.conditions;
+
+    gsap.utils.toArray(".container-itens").forEach((card, index) => {
+      gsap.from(card, {
+        opacity: 0,
+        y: mobile ? 40 : 100,
+        scale: mobile ? 0.95 : 0.8,
+        rotation: (index % 2 === 0 ? -1 : 1) * (mobile ? 4 : 12),
+        ease: "none",
+
+        scrollTrigger: {
+          trigger: card,
+          start: mobile ? "top 90%" : "top 71%",
+          end: mobile ? "top 55%" : "top 25%",
+          scrub: 1,
+        },
+      });
+    });
+  },
+);
 
 
 
