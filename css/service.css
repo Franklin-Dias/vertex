@@ -101,7 +101,7 @@
  }
 
  .container-servicos-itens{
-    display: block;c
+    display: block;
     margin: 0 auto;
     gap: 20px;
     width: 100%;
@@ -113,6 +113,7 @@
  }
 
 }
+
 
 @media (max-width: 375px){
   .container-servicos{
