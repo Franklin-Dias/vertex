@@ -55,7 +55,7 @@
 
 }
 
-@media (max-width: 393px){
+@media (max-width: 375px){
   .etapas{
     display: block;
 
@@ -64,7 +64,7 @@
 
   .grid-etapas{
     display: block;
-    margin: 10px 0px 120px 25px;
+    margin: 10px 0px 120px 40px;
   }
   .etapa{
      margin: 0;
