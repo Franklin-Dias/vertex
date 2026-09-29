@@ -192,5 +192,41 @@ mm.add(
   },
 );
 
+gsap.registerPlugin(ScrollTrigger);
 
+const secao = document.querySelector(".etapas");
+const cards = gsap.utils.toArray(".etapa", secao);
+
+const timeline = gsap.timeline({
+  scrollTrigger: {
+    trigger: secao,
+    start: "top 160px",
+
+    // Distância de rolagem reservada para a animação
+    end: () => `+=${window.innerHeight * 3}`,
+
+    pin: true,
+    pinSpacing: true,
+    scrub: true,
+    invalidateOnRefresh: true,
+  },
+});
+
+timeline.fromTo(
+  cards,
+  {
+    autoAlpha: 0,
+    y: 60,
+  },
+  {
+    autoAlpha: 1,
+    y: 0,
+    duration: 1,
+    stagger: 1,
+    ease: "none",
+  },
+);
+
+// Mantém todos visíveis por um trecho antes de liberar a seção
+timeline.to({}, { duration: 0.5 });
 
