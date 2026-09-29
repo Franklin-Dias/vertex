@@ -1,0 +1,82 @@
+.etapas {
+  min-height: 100svh;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  margin: 24px 0 120px 230px;
+}
+
+.grid-etapas {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+ 
+}
+
+.etapa {
+  width: 100%;
+}
+
+.paragrafo-etapa {
+  width: 50%;
+  margin-top: 10px;
+}
+
+.title-etapa {
+  margin-top: 20px;
+  font-size: 18px;
+  font-weight:;
+}
+
+.number {
+  border: 1px solid #7c3aed;
+  padding: 10px;
+  border-radius: 100%;
+}
+
+@media (max-width: 768px){
+  .etapas{
+    gap: 20px;
+
+
+  }
+
+  .grid-etapas{
+    display: block;
+    margin: 10px 0px 120px 40px;
+    width: 100%;
+  }
+  .etapa{
+     margin-bottom: 25px;
+     width: 100%;
+  }
+
+
+}
+
+@media (max-width: 393px){
+  .etapas{
+    display: block;
+
+
+  }
+
+  .grid-etapas{
+    display: block;
+    margin: 10px 0px 120px 25px;
+  }
+  .etapa{
+     margin: 0;
+     width: 100%;
+     margin-bottom: 28px;
+
+  }
+
+  .paragrafo-etapa{
+    width: 70%;
+    font-size: 14px;
+  }
+
+
+}
