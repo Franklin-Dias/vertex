@@ -95,7 +95,8 @@
   }
 
   .title-servicos {
-    width: 70%;
+    width: 50%;
+    font-size: 26px;
   }
 
   .container-servicos-itens {
@@ -122,8 +123,8 @@
   }
 
   .title-servicos {
-    width: 100%;
-    font-size: 32px;
+    width: 50%;
+    font-size: 26px;
   }
 
   .paragrafo-servicos {
@@ -156,8 +157,8 @@
   }
 
   .title-servicos {
-    width: 100%;
-    font-size: 32px;
+    width: 50%;
+    font-size: 26px;
   }
 
   .paragrafo-servicos {
@@ -190,8 +191,8 @@
   }
 
   .title-servicos {
-    width: 100%;
-    font-size: 32px;
+   width: 90%;
+    font-size: 26px;
   }
 
   .paragrafo-servicos {
