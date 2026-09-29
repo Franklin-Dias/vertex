@@ -230,6 +230,24 @@ timeline.fromTo(
     duration: 1,
     stagger: 1,
     ease: "none",
+  },
+);
+
+// Mantém todos visíveis por um trecho antes de liberar a seção
+timeline.to({}, { duration: 0.5 });
+
+timeline.fromTo(
+  cards,
+  {
+    autoAlpha: 0,
+    y: 60,
+  },
+  {
+    autoAlpha: 1,
+    y: 0,
+    duration: 1,
+    stagger: 1,
+    ease: "none",
   }
 );
 
