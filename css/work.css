@@ -11,6 +11,7 @@
   width: 100%;
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
+ 
 }
 
 .etapa {
@@ -19,6 +20,7 @@
 
 .paragrafo-etapa {
   width: 60%;
+  width: 50%;
   margin-top: 10px;
 }
 
@@ -80,4 +82,48 @@
     width: 70%;
     font-size: 14px;
   }
+@media (max-width: 768px){
+  .etapas{
+    gap: 20px;
+
+
+  }
+
+  .grid-etapas{
+    display: block;
+    margin: 10px 0px 120px 40px;
+    width: 100%;
+  }
+  .etapa{
+     margin-bottom: 25px;
+     width: 100%;
+  }
+
+
+}
+
+@media (max-width: 393px){
+  .etapas{
+    display: block;
+
+
+  }
+
+  .grid-etapas{
+    display: block;
+    margin: 10px 0px 120px 25px;
+  }
+  .etapa{
+     margin: 0;
+     width: 100%;
+     margin-bottom: 28px;
+
+  }
+
+  .paragrafo-etapa{
+    width: 70%;
+    font-size: 14px;
+  }
+
+
 }

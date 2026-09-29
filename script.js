@@ -21,22 +21,29 @@ document.addEventListener("DOMContentLoaded", () => {
     // Mantem a reproducao continua, sem reiniciar a cada movimento.
     if (video.paused && !playPending) {
       playPending = true;
-      video.play().then(() => {
-        if (!shouldPlay()) video.pause();
-      }).catch(() => {
-        // Uma interacao pode tentar novamente se o navegador bloquear o autoplay.
-      }).finally(() => {
-        playPending = false;
-      });
+      video
+        .play()
+        .then(() => {
+          if (!shouldPlay()) video.pause();
+        })
+        .catch(() => {
+          // Uma interacao pode tentar novamente se o navegador bloquear o autoplay.
+        })
+        .finally(() => {
+          playPending = false;
+        });
     }
   };
 
   video.muted = true;
 
-  const observer = new IntersectionObserver(([entry]) => {
-    videoVisible = entry.isIntersecting;
-    updatePlayback();
-  }, { threshold: 0 });
+  const observer = new IntersectionObserver(
+    ([entry]) => {
+      videoVisible = entry.isIntersecting;
+      updatePlayback();
+    },
+    { threshold: 0 },
+  );
   observer.observe(video);
 
   document.addEventListener("visibilitychange", updatePlayback);
@@ -45,7 +52,6 @@ document.addEventListener("DOMContentLoaded", () => {
   window.addEventListener("keydown", updatePlayback);
   reducedMotion.addEventListener("change", updatePlayback);
 });
-
 
 // Efeito dos links do menu ao passar o mouse ou navegar pelo teclado.
 document.addEventListener("DOMContentLoaded", () => {
@@ -91,7 +97,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 gsap.registerPlugin(ScrollTrigger, SplitText);
 document.fonts.ready.then(() => {
-  if(window.matchMedia("(prefers-reduced-motion)").matches){
+  if (window.matchMedia("(prefers-reduced-motion)").matches) {
     return;
   }
   const texto = SplitText.create(".paragrafo-servi", {
@@ -183,7 +189,7 @@ mm.add(
 
         scrollTrigger: {
           trigger: card,
-          start: mobile ? "top 90%" : "top 71%",
+          start: mobile ? "top 80%" : "top 50%",
           end: mobile ? "top 55%" : "top 25%",
           scrub: 1,
         },
@@ -230,3 +236,20 @@ timeline.fromTo(
 // Mantém todos visíveis por um trecho antes de liberar a seção
 timeline.to({}, { duration: 0.5 });
 
+timeline.fromTo(
+  cards,
+  {
+    autoAlpha: 0,
+    y: 60,
+  },
+  {
+    autoAlpha: 1,
+    y: 0,
+    duration: 1,
+    stagger: 1,
+    ease: "none",
+  }
+);
+
+// Mantém todos visíveis por um trecho antes de liberar a seção
+timeline.to({}, { duration: 0.5 });
