@@ -191,7 +191,7 @@
   }
 
   .title-servicos {
-   width: 90%;
+    width: 90%;
     font-size: 26px;
   }
 
@@ -219,6 +219,5 @@
   .paragraph-hero2 {
     font-size: 14px;
     width: 100%;
-    
   }
 }

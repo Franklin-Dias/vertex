@@ -1,0 +1,136 @@
+.container-contact {
+  display: flex;
+  flex-direction: column;
+  margin: 24px 0 120px 230px;
+}
+
+.title-contact {
+  font-size: 48px;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
+.form {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0px, 1fr));
+  gap: 20px 16px;
+  width: min(100%, 1200px);
+  margin-inline: auto;
+  height: auto;
+  background-color: rgba(124, 58, 237, 0.32);
+  padding: 20px;
+  margin: 0 auto;
+  box-sizing: border-box;
+  border-radius: 12px;
+  
+}
+
+.div-f {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  min-width: 0;
+}
+
+.div-f select,
+input,
+textarea {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 14px;
+  background: transparent;
+  color: #fff;
+  border: 1px solid #111827;
+  border-radius: 8px;
+  
+}
+
+.div-f option {
+  background: #111827;
+  color: #fff;
+}
+
+.div-f textarea {
+  resize: vertical;
+  min-height: 120px;
+}
+
+.largura-total {
+  grid-column: 1 / -1;
+}
+
+.consentimento {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+}
+
+.consentimento input {
+  width: 20px;
+  height: 20px;
+  border-radius: 30px;
+}
+
+.consentimento span {
+  display: inline-block;
+  width: 100%;
+}
+
+.btn-form{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  padding: 20px;
+  border-radius: 20px;
+  margin-top: 20px;
+  background-color: #7c3aed;
+  color: var(--text-color);
+  border: none;
+  box-shadow: 8px 0px 6px #111827;
+
+ 
+}
+
+.btn-form:hover {
+  background: transparent;
+  box-shadow: 8px 0px 6px rgba(17, 24, 39, 0.32);
+  transform: translateY(-2px);
+  transition: all 0.3s ease-in-out;
+  border: 1px solid #7c3aed;
+}
+
+@media (max-width: 768px) {
+  .container-contact {
+    margin: 24px 0 40px;
+    padding: 0 20px;
+    width: 100%;
+    min-height: auto;
+  }
+
+  .title-contact {
+    font-size: 28px;
+    font-weight: 600;
+    margin-bottom: 10px;
+  }
+  .paragrafo-contact{
+    font-size: 14px;
+    margin-bottom: 20px;
+  }
+
+  .form {
+    grid-template-columns: 1fr;
+    gap: 16px;
+    width: min(100%, 100%);
+    margin-inline: auto;
+    height: auto;
+    background-color: rgba(124, 58, 237, 0.32);
+    padding: 20px;
+    margin: 0 auto;
+    box-sizing: border-box;
+    border-radius: 12px;
+
+}
+
+}
