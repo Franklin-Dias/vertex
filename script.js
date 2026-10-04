@@ -189,7 +189,7 @@ mm.add(
 
         scrollTrigger: {
           trigger: card,
-          start: mobile ? "top 80%" : "top 50%",
+          start: mobile ? "top 80%" : "top 40%",
           end: mobile ? "top 55%" : "top 25%",
           scrub: 1,
         },
@@ -209,7 +209,7 @@ const timeline = gsap.timeline({
     start: "top 160px",
 
     // Distância de rolagem reservada para a animação
-    end: () => `+=${window.innerHeight * 3}`,
+    end: () => `+=${window.innerHeight * 1.9}`,
 
     pin: true,
     pinSpacing: true,
@@ -234,22 +234,4 @@ timeline.fromTo(
 );
 
 // Mantém todos visíveis por um trecho antes de liberar a seção
-timeline.to({}, { duration: 0.5 });
-
-timeline.fromTo(
-  cards,
-  {
-    autoAlpha: 0,
-    y: 60,
-  },
-  {
-    autoAlpha: 1,
-    y: 0,
-    duration: 1,
-    stagger: 1,
-    ease: "none",
-  }
-);
-
-// Mantém todos visíveis por um trecho antes de liberar a seção
-timeline.to({}, { duration: 0.5 });
+timeline.to({}, { duration: 0.3 });

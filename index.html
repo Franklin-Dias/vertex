@@ -157,7 +157,7 @@
       <div class="container-servicos-texto">
         <p class="paragrafo-servi">Como Trabalhamos</p>
         <h2 id="service" class="title-servicos">
-          Do diagnóstico à entrega, sem enrolação
+          Do diagnóstico à entrega, sem enrolação.
         </h2>
         <p class="paragrafo-servicos">
           Um processo simples e transparente, para você acompanhar cada etapa do
@@ -201,17 +201,56 @@
         </div>
       </div>
     </section>
-
-    <div class="etapa">
-      <span class="number">04</span>
-      <h3 class="title-etapa">Entrega e suporte</h3>
-      <p class="paragrafo-etapa">
-        Publicamos, treinamos sua equipe e seguimos por perto no pós-entrega.
+    <section class="container-contact">
+      <h3 class="title-contact">Fale com a Vertex</h3>
+      <p class="paragrafo-contact">
+        Conte o que você precisa e nossa equipe entrará em contato.
       </p>
-    </div>
-    <div class="etapa">
-   
-  
+    </section>
+    <section class="container-form">
+      <form id="form" class="form">
+        <div class="div-f">
+          <label for="name">Nome:</label>
+          <input type="text" placeholder="Qual seu nome.." required />
+        </div>
+        <div class="div-f">
+          <label for="email">E-mail</label>
+          <input type="email" placeholder="Qual seu melhor e-mail.." required />
+        </div>
+        <div class="div-f">
+          <label for="tel">WhatsApp/ telefone</label>
+          <input type="tel" placeholder="Qual seu melhor telefone.." required />
+        </div>
+        <div class="div-f">
+          <label for="assunto" required>Assunto</label>
+          <select id="assunto" name="assunto" required>
+            <option>Selecione</option>
+            <option>Quero um orçamento</option>
+            <option>Duvida Sobre um serviço</option>
+            <option>Suporte</option>
+            <option>Parceria</option>
+            <option>Outros</option>
+          </select>
+        </div>
+        <div class="div-f largura-total">
+          <label for="mensagem">Mensagem</label>
+          <textarea
+            id="mensagem"
+            name="mensagem"
+            placeholder="Digite sua mensagem.."
+            required
+          ></textarea>
+        </div>
+        <label class="consentimento largura-total">
+          <input type="checkbox" name="consentimento" required />
+          <span>Concordo em ser contatado pela Vertex sobre esta mensagem. *</span
+          >
+        </label>
+        <div id="formbtn" class="div-btn">
+          <button id="formbtn" type="submit" class="btn-form">Enviar</button>
+        </div>
+      </form>
+    </section>
 
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.15/dist/gsap.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/SplitText.min.js"></script>
