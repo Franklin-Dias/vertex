@@ -18,7 +18,7 @@
   margin-inline: auto;
   height: auto;
   background-color: rgba(124, 58, 237, 0.32);
-  padding: 20px;
+  padding: 36px;
   margin: 0 auto;
   box-sizing: border-box;
   border-radius: 12px;
@@ -88,7 +88,7 @@ textarea {
   background-color: #7c3aed;
   color: var(--text-color);
   border: none;
-  box-shadow: 8px 0px 6px #111827;
+  box-shadow: 8px 0px 6px rgba(17, 24, 39, 0.47);
 
  
 }

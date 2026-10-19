@@ -235,3 +235,15 @@ timeline.fromTo(
 
 // Mantém todos visíveis por um trecho antes de liberar a seção
 timeline.to({}, { duration: 0.3 });
+
+document.querySelectorAll(".fa-brands").forEach((icon) =>{
+  const animation = gsap.to(icon, {
+    "--angulo": "360deg",
+    duration: 1.5,
+    repeat: -1,
+    ease: "none",
+    paused: true,
+  });
+   icon.addEventListener("mouseenter", () => animation.play());
+   icon.addEventListener("mouseleave", () => animation.pause());
+});
