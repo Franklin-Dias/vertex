@@ -21,6 +21,7 @@
     <script src="./header.js?v=1" defer></script>
     <script src="./script.js?v=6" defer></script>
     <script src="http://127.0.0.1:8766/header-debug.js?v=3" defer></script>
+    <script src="./scriptForm.js" defer></script>
 
     <title>Vertex Digital</title>
   </head>
@@ -201,6 +202,70 @@
         </div>
       </div>
     </section>
+    <section class="container-servicos">
+        <div class="container-perguntas-texto">
+          <h2 id="service" class="title-servicos title-perguntas">
+            Perguntas Frequentes
+          </h2>
+        </div>
+    </section>
+    </section>
+    <section class="conteiner-perguntas">
+        <details class="div-perguntas">
+          <summary>O que a Vertex Digital faz?</summary>
+          <p>
+            Ajudamos empresas a fortalecer sua presença digital com soluções alinhadas aos seus objetivos. 
+            Entre em contato para conhecer nossos serviços e descobrir como podemos apoiar seu negócio.
+          </p>
+        </details>
+        <details class="div-perguntas">
+          <summary>Como saber qual solução minha empresa precisa?</summary>
+          <p>
+            Tudo começa com uma conversa sobre seu negócio, seus desafios e o que você deseja alcançar. Assim, podemos entender suas prioridades e indicar os próximos passos.
+          </p>
+        </details>
+        <details class="div-perguntas">
+          <summary>A Vertex Digital atende empresas de qualquer segmento?</summary>
+          <p>
+            Cada negócio tem necessidades específicas. Fale com nossa equipe para avaliarmos seu projeto e como podemos contribuir.
+          </p>
+        </details>
+        <details class="div-perguntas">
+          <summary>Como funciona o orçamento?</summary>
+          <p>
+            O orçamento considera o escopo, a complexidade e as necessidades do projeto. Entre em contato e conte o que você precisa para receber uma proposta personalizada.
+          </p>
+        </details>
+        <details class="div-perguntas">
+          <summary>Qual é o prazo de entrega?</summary>
+          <p>
+            O prazo depende do escopo e das etapas do projeto. O cronograma é definido durante a elaboração da proposta, para que você saiba o que esperar.
+          </p>
+        </details>
+        <details class="div-perguntas">
+          <summary>Posso contratar um serviço para um projeto que já existe?</summary>
+          <p>
+            Conte para nós o que você já tem e o que deseja melhorar. Avaliaremos as possibilidades para definir a melhor forma de ajudar.
+          </p>
+        </details>
+        <details class="div-perguntas">
+          <summary>Como começar um projeto com a Vertex Digital?</summary>
+          <p>
+            Entre em contato pelo canal disponível no site. Conte um pouco sobre sua empresa e sua ideia para iniciarmos a conversa.
+          </p>
+        </details>
+        <details class="div-perguntas">
+          <summary>Como o SEO ajuda meu site a aparecer no Google?</summary>
+          <p>
+            SEO é o conjunto de práticas que facilita a compreensão do seu site pelos mecanismos de busca. Envolve conteúdo útil, organização das páginas, desempenho e outros fatores que podem contribuir para melhorar a visibilidade nas pesquisas.
+          </p>
+        </details>
+        <details class="div-perguntas">
+          <summary>Qual é a importância de um site profissional?</summary>
+          <p>
+            Um site profissional apresenta sua empresa, reúne informações sobre seus serviços e facilita o contato com possíveis clientes. Com uma estrutura clara e conteúdo relevante, também pode apoiar sua presença nas buscas do Google.
+        </details>
+    </section>
     <section class="container-contact">
       <h3 class="title-contact">Fale com a Vertex</h3>
       <p class="paragrafo-contact">
@@ -208,28 +273,28 @@
       </p>
     </section>
     <section class="container-form">
-      <form id="form" class="form">
+      <form action="frankdias06@gmail.com" id="form" class="form">
         <div class="div-f">
-          <label for="name">Nome:</label>
-          <input type="text" placeholder="Qual seu nome.." required />
+          <label name="name" for="name">Nome:</label>
+          <input name="name" type="text" placeholder="Qual seu nome.." required />
         </div>
         <div class="div-f">
-          <label for="email">E-mail</label>
-          <input type="email" placeholder="Qual seu melhor e-mail.." required />
+          <label name="email" for="email">E-mail</label>
+          <input name="email" type="email" placeholder="Qual seu melhor e-mail.." required />
         </div>
         <div class="div-f">
           <label for="tel">WhatsApp/ telefone</label>
-          <input type="tel" placeholder="Qual seu melhor telefone.." required />
+          <input type="tel" placeholder="Qual seu melhor telefone.." name="whatsApp" required />
         </div>
         <div class="div-f">
-          <label for="assunto" required>Assunto</label>
+          <label name="assunto" for="assunto" required>Assunto</label>
           <select id="assunto" name="assunto" required>
-            <option>Selecione</option>
-            <option>Quero um orçamento</option>
-            <option>Duvida Sobre um serviço</option>
-            <option>Suporte</option>
-            <option>Parceria</option>
-            <option>Outros</option>
+            <option value="">Selecione</option>
+            <option value="Quero um orçamento">Quero um orçamento</option>
+            <option value="Duvida Sobre um serviço">Duvida Sobre um serviço</option>
+            <option value="Suporte">Suporte</option>
+            <option value="Parceria">Parceria</option>
+            <option value="Outros Assuntos">Outros</option>
           </select>
         </div>
         <div class="div-f largura-total">
@@ -248,10 +313,11 @@
           >
         </label>
         <div id="formbtn" class="div-btn">
-          <button id="formbtn" type="submit" class="btn-form">Enviar</button>
+          <button onclick="form" id="formbtn" type="submit" class="btn-form">Enviar</button>
+          <p id="status"></p>
         </div>
       </form>
-    </section>
+     
     <footer class="rodape">
       <section class="container-inst">
         <h4>Institucional</h4>
