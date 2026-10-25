@@ -1,13 +1,14 @@
 .container-contact {
   display: flex;
   flex-direction: column;
-  margin: 24px 0 120px 230px;
+  margin: 120px 0 120px 230px;
 }
 
 .title-contact {
   font-size: 48px;
   font-weight: 600;
   margin-bottom: 10px;
+  margin-top: 40px;
 }
 
 .form {
