@@ -138,6 +138,38 @@
   display: inline-block;
   align-items: center;
 }
+.container-list-contato a {
+  --menu-underline: 0;
+  position: relative;
+  display: inline-block;
+}
+
+
+.container-list-contato a::after {
+  position: absolute;
+  content: "";
+  right: 0;
+  left: 0;
+  height: 2px;
+  bottom: -5px;
+  border-radius: 2px;
+  background: linear-gradient(90deg, var(--secundaria), var(--terceira));
+  pointer-events: none;
+  transform: scaleX(var(--menu-underline));
+  transform: transform 0.3s ease;
+  transform-origin: left center;
+  transition: transform 0.25s ease-out;
+}
+
+.container-list-contato a:focus-visible {
+  outline: 2px solid var(--text);
+  outline-offset: 10px;
+  border-radius: 2px;
+}
+.container-list-contato a:hover,
+.container-list-contato a:focus-visible {
+  --menu-underline: 1;
+}
 
 .bi-whatsapp {
   margin-right: 10px;
@@ -215,23 +247,24 @@
   align-items: center;
 }
 
-.container-phone{
+.container-phone {
   display: flex;
   align-items: center;
 }
-.container-address-list{
+.container-address-list {
   display: flex;
   align-items: center;
 }
 
-.container-email{
+.container-email {
   display: flex;
   align-items: center;
- }
+}
 
-.container-list-social{
+.container-list-social {
   margin: 10px 0 0 20px;
 }
+
 
 @media (max-width: 768px) {
   .rodape {
@@ -262,23 +295,22 @@
   }
   .bi-geo-alt {
     width: 50px;
-    
   }
-  .container-phone{
+  .container-phone {
     display: flex;
     align-items: center;
     gap: 8px;
     margin-bottom: 20px;
     padding: 0px;
   }
-  .container-email{
+  .container-email {
     display: flex;
     align-items: center;
     gap: 8px;
     margin-bottom: 20px;
     padding: 0px;
   }
-  .container-list-social{
+  .container-list-social {
     margin: 10px 0 0 20px;
   }
 }

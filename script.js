@@ -173,33 +173,115 @@ const mm = gsap.matchMedia();
 
 mm.add(
   {
-    mobile: "(max-width: 767px)",
-    desktop: "(min-width: 768px)",
+    motion: "(prefers-reduced-motion: no-preference)",
+    mobile: "(max-width: 768px)",
+    desktop: "(min-width: 769px)",
   },
   (context) => {
+    if (!context.conditions.motion) return;
     const { mobile } = context.conditions;
+    const viewport = document.querySelector(".servicos-viewport");
+    const grid = viewport?.querySelector(".container-servicos-itens");
+    if (!grid) return;
 
-    gsap.utils.toArray(".container-itens").forEach((card, index) => {
-      gsap.from(card, {
-        opacity: 0,
-        y: mobile ? 40 : 100,
-        scale: mobile ? 0.95 : 0.8,
-        rotation: (index % 2 === 0 ? -1 : 1) * (mobile ? 4 : 12),
-        ease: "none",
-
-        scrollTrigger: {
-          trigger: card,
-          start: mobile ? "top 80%" : "top 40%",
-          end: mobile ? "top 55%" : "top 25%",
-          scrub: 1,
-        },
+    const serviceCards = gsap.utils.toArray(".container-itens", grid);
+    const header = document.querySelector(".container-header");
+    const topOffset = () => (header?.offsetHeight || 0) + 16;
+    if (mobile) {
+      // O empilhamento nativo preserva o espaco das secoes seguintes.
+      const updateStackOffset = () => {
+        viewport.style.setProperty("--service-stack-top", `${topOffset()}px`);
+      };
+      viewport.classList.add("is-stacked");
+      updateStackOffset();
+      window.addEventListener("resize", updateStackOffset);
+      serviceCards.forEach((card, index) => {
+        gsap.set(card, { zIndex: index + 1 });
       });
+      return () => {
+        window.removeEventListener("resize", updateStackOffset);
+        viewport.classList.remove("is-stacked");
+        viewport.style.removeProperty("--service-stack-top");
+      };
+    }
+    const measure = () => {
+      if (mobile) {
+        viewport.style.setProperty("--service-card-height", `${Math.max(1, window.innerHeight - topOffset() - 40)}px`);
+      }
+      viewport.style.height = `${Math.min(grid.offsetHeight, Math.max(1, window.innerHeight - topOffset() - 16))}px`;
+    };
+    const distance = () => Math.max(0, grid.offsetHeight - viewport.clientHeight);
+
+    viewport.classList.add("is-pinned");
+    if (mobile) viewport.classList.add("is-stacked");
+    measure();
+
+    const servicesTimeline = gsap.timeline({
+      scrollTrigger: {
+        trigger: viewport,
+        start: () => `top ${topOffset()}px`,
+        end: () => `+=${mobile ? window.innerHeight * (serviceCards.length - 1) * 0.85 : distance() * 1.25 + window.innerHeight * 1.3}`,
+        pin: true,
+        pinSpacing: true,
+        scrub: 0.8,
+        anticipatePin: 1,
+        refreshPriority: 1,
+        invalidateOnRefresh: true,
+        onRefreshInit: measure,
+      },
     });
+
+    if (mobile) {
+      serviceCards.forEach((card, index) => {
+        gsap.set(card, { zIndex: index + 1 });
+        if (index === 0) return;
+
+        const position = index - 1;
+        servicesTimeline.fromTo(card, {
+          y: () => viewport.clientHeight + 32,
+        }, {
+          y: 0,
+          duration: 1,
+          ease: "power1.inOut",
+        }, position);
+        servicesTimeline.to(serviceCards[index - 1], {
+          scale: 0.95,
+          y: -8,
+          duration: 1,
+          ease: "power1.inOut",
+        }, position);
+      });
+    } else {
+      servicesTimeline.from(serviceCards, {
+      autoAlpha: 0,
+      stagger: 0.12,
+      duration: 0.8,
+      ease: "power1.inOut",
+    });
+    servicesTimeline.to(grid, {
+      y: () => -distance(),
+      duration: () => Math.max(1, distance() / window.innerHeight * 2),
+      ease: "none",
+    });
+    }
+    // Reserva um trecho para ler o ultimo card antes de liberar a pagina.
+    servicesTimeline.to({}, { duration: 0.4 });
+
+    document.fonts.ready.then(() => ScrollTrigger.refresh());
+    window.addEventListener("load", () => ScrollTrigger.refresh(), { once: true });
+
+    return () => {
+      viewport.classList.remove("is-pinned");
+      viewport.classList.remove("is-stacked");
+      viewport.style.removeProperty("--service-card-height");
+      viewport.style.removeProperty("height");
+    };
   },
 );
 
 gsap.registerPlugin(ScrollTrigger);
 
+mm.add("(min-width: 769px) and (prefers-reduced-motion: no-preference)", () => {
 const secao = document.querySelector(".etapas");
 const cards = gsap.utils.toArray(".etapa", secao);
 
@@ -235,6 +317,7 @@ timeline.fromTo(
 
 // Mantém todos visíveis por um trecho antes de liberar a seção
 timeline.to({}, { duration: 0.3 });
+});
 
 document.querySelectorAll(".fa-brands").forEach((icon) =>{
   const animation = gsap.to(icon, {
