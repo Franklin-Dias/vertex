@@ -41,6 +41,7 @@
 .menu-d {
   display: flex;
   justify-content: space-between;
+  
   align-items: center;
   gap: 80px;
 }
@@ -76,24 +77,61 @@
 /* A base escura cobre o grid e encontra o fundo da proxima secao. */
 .container-main::before {
   background:
-    radial-gradient(ellipse at 76% 78%, rgb(var(--hero-blue) / 24%), transparent 36%),
-    radial-gradient(ellipse at 93% 42%, rgb(var(--hero-violet) / 19%), transparent 35%),
-    radial-gradient(ellipse at 8% 35%, rgb(var(--hero-blue) / 10%), transparent 42%),
+    radial-gradient(
+      ellipse at 76% 78%,
+      rgb(var(--hero-blue) / 24%),
+      transparent 36%
+    ),
+    radial-gradient(
+      ellipse at 93% 42%,
+      rgb(var(--hero-violet) / 19%),
+      transparent 35%
+    ),
+    radial-gradient(
+      ellipse at 8% 35%,
+      rgb(var(--hero-blue) / 10%),
+      transparent 42%
+    ),
     linear-gradient(to bottom, var(--hero-background) 78%, var(--primaria));
 }
 
 /* Feixes de luz inspirados na iluminacao azul e violeta do video. */
 .container-main::after {
   background:
-    linear-gradient(125deg, transparent 58%, rgb(var(--hero-violet) / 4%) 62%, rgb(var(--hero-violet) / 30%) 62.3%, transparent 62.7%),
-    linear-gradient(55deg, transparent 61%, rgb(var(--hero-blue) / 5%) 65%, rgb(32 155 255 / 26%) 65.3%, transparent 65.7%);
+    linear-gradient(
+      125deg,
+      transparent 58%,
+      rgb(var(--hero-violet) / 4%) 62%,
+      rgb(var(--hero-violet) / 30%) 62.3%,
+      transparent 62.7%
+    ),
+    linear-gradient(
+      55deg,
+      transparent 61%,
+      rgb(var(--hero-blue) / 5%) 65%,
+      rgb(32 155 255 / 26%) 65.3%,
+      transparent 65.7%
+    );
   filter: blur(3px);
-  -webkit-mask-image: linear-gradient(to bottom, transparent 6%, #000 28%, #000 65%, transparent 94%);
-  mask-image: linear-gradient(to bottom, transparent 6%, #000 28%, #000 65%, transparent 94%);
+  -webkit-mask-image: linear-gradient(
+    to bottom,
+    transparent 6%,
+    #000 28%,
+    #000 65%,
+    transparent 94%
+  );
+  mask-image: linear-gradient(
+    to bottom,
+    transparent 6%,
+    #000 28%,
+    #000 65%,
+    transparent 94%
+  );
 }
 
 .container-list {
   display: flex;
+  align-items: center;
   gap: 40px;
   list-style: none;
 }
@@ -218,15 +256,29 @@
   border-radius: 0;
   border: none;
   /* Desvanece as quatro bordas para integrar o video ao fundo. */
-  -webkit-mask-image: linear-gradient(to right, transparent, #111827 12%, #111827 88%, transparent),
-    linear-gradient(to bottom, transparent, #111827 12%, #111827 88%, transparent);
+  -webkit-mask-image:
+    linear-gradient(
+      to right,
+      transparent,
+      #111827 12%,
+      #111827 88%,
+      transparent
+    ),
+    linear-gradient(
+      to bottom,
+      transparent,
+      #111827 12%,
+      #111827 88%,
+      transparent
+    );
   -webkit-mask-composite: source-in;
-  mask-image: linear-gradient(to right, transparent, #000 12%, #000 88%, transparent),
+  mask-image:
+    linear-gradient(to right, transparent, #000 12%, #000 88%, transparent),
     linear-gradient(to bottom, transparent, #000 12%, #000 88%, transparent);
   mask-composite: intersect;
 }
 
-.btn-menu-mobile{
+.btn-menu-mobile {
   display: none;
   background: var(--secundaria);
   width: 44px;
@@ -275,12 +327,26 @@
     height: 72px;
   }
 
-  .menu-d {
-    display: none;
+   .menu-d {
+    display: block;
   }
 
   .container-list {
     display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    z-index: 10;
+    flex-direction: column;
+    gap: 4px;
+    padding: 16px 24px;
+    background: rgba(17, 24, 39, 0.82);
+  }
+  .container-list.aberto{
+    display: flex;
+    gap: 16px;
+    font-size: 18px;
   }
 
   .hero {
@@ -295,11 +361,10 @@
   .container-main {
     padding-top: 112px;
   }
-  .btn-menu-mobile{
+  .btn-menu-mobile {
     display: block;
-
   }
-  .btn-menu{
+  .btn-menu {
     display: none;
   }
 }
@@ -307,8 +372,16 @@
 @media (max-width: 900px) {
   .container-main::before {
     background:
-      radial-gradient(ellipse at 35% 76%, rgb(var(--hero-blue) / 24%), transparent 32%),
-      radial-gradient(ellipse at 90% 72%, rgb(var(--hero-violet) / 19%), transparent 30%),
+      radial-gradient(
+        ellipse at 35% 76%,
+        rgb(var(--hero-blue) / 24%),
+        transparent 32%
+      ),
+      radial-gradient(
+        ellipse at 90% 72%,
+        rgb(var(--hero-violet) / 19%),
+        transparent 30%
+      ),
       linear-gradient(to bottom, var(--hero-background) 85%, var(--primaria));
   }
 
@@ -333,7 +406,6 @@
     justify-content: center;
     padding-bottom: 80px;
   }
-  
 }
 
 @media (max-width: 768px) {
@@ -345,7 +417,11 @@
   }
 
   .container-main::before {
-    background: linear-gradient(to bottom, var(--hero-background) 85%, var(--primaria));
+    background: linear-gradient(
+      to bottom,
+      var(--hero-background) 85%,
+      var(--primaria)
+    );
   }
 
   .container-main::after {
@@ -369,8 +445,20 @@
     height: 100%;
     object-fit: cover;
     object-position: center top;
-     -webkit-mask-image: linear-gradient(to bottom, transparent, #000 8%, #000 38%, transparent 90%);
-    mask-image: linear-gradient(to bottom, transparent, #000 8%, #000 38%, transparent 90%);
+    -webkit-mask-image: linear-gradient(
+      to bottom,
+      transparent,
+      #000 8%,
+      #000 38%,
+      transparent 90%
+    );
+    mask-image: linear-gradient(
+      to bottom,
+      transparent,
+      #000 8%,
+      #000 38%,
+      transparent 90%
+    );
   }
 
   .hero {

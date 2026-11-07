@@ -3,8 +3,21 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Vertex Digital: sites, landing pages, sistemas e automações sob medida para pequenos negócios em Patos de Minas e região."
+    />
+    <meta property="og:title" content="Vertex Digital" />
+    <meta
+      property="og:description"
+      content="Sites, sistemas e automações que fazem sua empresa crescer."
+    />
+    <meta
+      property="og:image"
+      content="https://franklin-dias.github.io/vertex/assets/og.png"
+    />
     <link rel="stylesheet" href="./css/global.css?v=5" />
-    <link rel="shortcut icon" href="./assets/v-logo.svg" type="image/x-icon" />
+    <link rel="shortcut icon" href="./assets/v-logo.svg" type="image/svg+xml" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -18,9 +31,8 @@
       crossorigin="anonymous"
       referrerpolicy="no-referrer"
     />
-    <script src="./header.js?v=1" defer></script>
+    <script src="./header.js?v=2" defer></script>
     <script src="./script.js?v=6" defer></script>
-    <script src="http://127.0.0.1:8766/header-debug.js?v=3" defer></script>
     <script src="./scriptForm.js" defer></script>
 
     <title>Vertex Digital</title>
@@ -33,18 +45,33 @@
         src="./assets/logo-vertex-sf.png"
         alt="Logotipo da marca Vertex digital"
       />
-      <button id="btn-menu-mobile" class="btn-menu-mobile">
-        <i class="fa-solid fa-bars"></i>
-      </button>
-      <nav id="menu-d" class="menu-d">
-        <ul class="container-list">
+
+      <nav aria-label="Menu principal" id="menu-d" class="menu-d">
+        <button
+          id="btn-menu-mobile"
+          class="btn-menu-mobile"
+          type="button"
+          aria-label="Abrir menu"
+          aria-controls="menu"
+          aria-expanded="false"
+        >
+          <span aria-hidden="true">☰</span>
+        </button>
+        <ul id="menu" class="container-list">
           <li><a href="/">Home</a></li>
           <li><a href="#quem-somos">Sobre Nós</a></li>
           <li><a href="#">Projetos</a></li>
-          <li><a href="#">Depoimentos</a></li>
-          <li><a href="#">Contato</a></li>
+          <!-- <li><a href="#">Depoimentos</a></li> -->
+          <li><a href="#contact">Contato</a></li>
+          <a
+            href="https://wa.me/+5531998946231?text=Ol%C3%A1,%20gostaria%20de%20tirar%20algumas%20duvidas?"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="btn-menu"
+          >
+            Fale conosco
+          </a>
         </ul>
-        <button id="btn-menu" class="btn-menu">Fale conosco</button>
       </nav>
     </header>
     <main class="container-main">
@@ -71,7 +98,7 @@
           loop
           muted
           playsinline
-          preload="auto"
+          preload="metadata"
         ></video>
       </div>
     </main>
@@ -87,77 +114,88 @@
         </p>
       </div>
     </section>
-    <div class="container-servicos-itens">
-      <div class="container-itens">
-        <img
-          class="svg-img"
-          src="./assets/code_01.svg"
-          alt="Imagem de maior e menor"
-        />
-        <h3>Sites e Landing Pages</h3>
-        <p>
-          Páginas rápidas, responsivas e pensadas para converter visitante em
-          cliente.
-        </p>
-        <a class="serv-btn" href="#">Saiba Mais</a>
-      </div>
-      <div class="container-itens">
-        <img
-          class="svg-img"
-          src="./assets/monitor.svg"
-          alt="Imagem de monitor"
-        />
-        <h3>Sistemas Web</h3>
-        <p>
-          Plataformas e sistemas internos sob medida para organizar sua
-          operação.
-        </p>
-        <a class="serv-btn" href="#">Saiba Mais</a>
-      </div>
-      <div class="container-itens">
-        <img class="svg-img" src="./assets/cloud.svg" alt="Imagem de escudo" />
-        <h3>Automação e IA</h3>
-        <p>
-          Fluxos automatizados e agentes de IA que eliminam tarefas repetitivas.
-        </p>
-        <a class="serv-btn" href="#">Saiba Mais</a>
-      </div>
-      <div class="container-itens">
-        <img
-          class="svg-img"
-          src="./assets/data.svg"
-          alt="Imagem de dados dashboard"
-        />
-        <h3>Dashboards e Relatórios</h3>
-        <p>
-          Dados organizados em painéis claros para decisões mais rápidas e
-          seguras.
-        </p>
-        <a class="serv-btn" href="#">Saiba Mais</a>
-      </div>
-      <div class="container-itens">
-        <img class="svg-img" src="./assets/shield.svg" alt="Imagem de escudo" />
-        <h3>Suporte e Manutenção</h3>
-        <p>
-          Acompanhamento contínuo para garantir segurança, performance e
-          evolução.
-        </p>
-        <a class="serv-btn" href="#">Saiba Mais</a>
-      </div>
-      <div class="container-itens">
-        <img class="svg-img" src="./assets/user.svg" alt="Imagem de usuário" />
-        <h3>Soluções para Empresas</h3>
-        <p>
-          Consultoria e projetos sob medida para o desafio específico do seu
-          negócio.
-        </p>
-        <a class="serv-btn" href="#">Saiba Mais</a>
+    <div class="servicos-viewport">
+      <div class="container-servicos-itens">
+        <div class="container-itens">
+          <img
+            class="svg-img"
+            src="./assets/code_01.svg"
+            alt="Imagem-de-tags-html"
+          />
+          <h3>Sites e Landing Pages</h3>
+          <p>
+            Páginas rápidas, responsivas e pensadas para converter visitante em
+            cliente.
+          </p>
+          <a class="serv-btn" href="#">Saiba Mais</a>
+        </div>
+        <div class="container-itens">
+          <img
+            class="svg-img"
+            src="./assets/monitor.svg"
+            alt="Imagem-de-monitor"
+          />
+          <h3>Sistemas Web</h3>
+          <p>
+            Plataformas e sistemas internos sob medida para organizar sua
+            operação.
+          </p>
+          <a class="serv-btn" href="#">Saiba Mais</a>
+        </div>
+        <div class="container-itens">
+          <img class="svg-img" src="./assets/cloud.svg" alt="Imagem-de-nuvem" />
+          <h3>Automação e IA</h3>
+          <p>
+            Fluxos automatizados e agentes de IA que eliminam tarefas
+            repetitivas.
+          </p>
+          <a class="serv-btn" href="#">Saiba Mais</a>
+        </div>
+        <div class="container-itens">
+          <img
+            class="svg-img"
+            src="./assets/data.svg"
+            alt="Imagem-de-dados-dashboard"
+          />
+          <h3>Dashboards e Relatórios</h3>
+          <p>
+            Dados organizados em painéis claros para decisões mais rápidas e
+            seguras.
+          </p>
+          <a class="serv-btn" href="#">Saiba Mais</a>
+        </div>
+        <div class="container-itens">
+          <img
+            class="svg-img"
+            src="./assets/shield.svg"
+            alt="Imagem-de-escudo"
+          />
+          <h3>Suporte e Manutenção</h3>
+          <p>
+            Acompanhamento contínuo para garantir segurança, performance e
+            evolução.
+          </p>
+          <a class="serv-btn" href="#">Saiba Mais</a>
+        </div>
+        <div class="container-itens">
+          <img
+            class="svg-img"
+            src="./assets/user.svg"
+            alt="Imagem-de-usuario"
+          />
+          <h3>Soluções para Empresas</h3>
+          <p>
+            Consultoria e projetos sob medida para o desafio específico do seu
+            negócio.
+          </p>
+          <a class="serv-btn" href="#">Saiba Mais</a>
+        </div>
       </div>
     </div>
     <section class="container-servicos">
       <div class="container-servicos-texto">
         <p class="paragrafo-servi">Como Trabalhamos</p>
-        <h2 id="service" class="title-servicos">
+        <h2 id="como-trabalhamos" class="title-servicos">
           Do diagnóstico à entrega, sem enrolação.
         </h2>
         <p class="paragrafo-servicos">
@@ -204,108 +242,147 @@
     </section>
 
     <section class="container-servicos">
-        <div class="container-perguntas-texto">
-          <h2 id="service" class="title-servicos title-quemSomos">
-            Quem somos
-          </h2>
-        </div>
-    
+      <div class="container-perguntas-texto">
+        <h2 id="quem-somos" class="title-servicos title-quemSomos">
+          Quem somos
+        </h2>
+      </div>
     </section>
     <section id="quem-somos" class="container-quemSomos">
       <div class="container-img-qs">
-        <img class="img-qs" src="./assets/sobre-nos-frank.jpg" alt="Foto Franklin fundador da Vertex Digital">
+        <img
+          class="img-qs"
+          src="./assets/sobre-nos-frank.jpg"
+          alt="Foto Franklin fundador da Vertex Digital"
+        />
       </div>
       <div class="div-qs">
-        <h3 class="title-qs">
-          De vendedor a fundador da Vertex Digital.
-        </h3>
-        <p>A Vertex Digital nasceu do sonho de empreender e da vontade de ajudar empresas e pequenos negócios a resolver problemas com a tecnologia.</p>
-        <p>Nossa história começa com a trajetória do fundador, que reúne experiências em vendas no varejo, gestão de frotas e na área administrativa. A vivência nessas funções trouxe um olhar prático para os desafios de um negócio: atender bem, organizar processos, otimizar o tempo e encontrar oportunidades de crescimento.</p>
+        <h3 class="title-qs">De vendedor a fundador da Vertex Digital.</h3>
         <p>
-          O desejo de construir algo próprio sempre esteve presente. Antes da Vertex, vieram as experiências com a venda de roupas e semijoias no digital, além do aprendizado em gestão de sites, campanhas de tráfego pago e SEO. Em 2026, essa trajetória deu origem à Vertex Digital, unindo experiência em negócios e conhecimento digital para atender outros empreendedores.
-        </p>
-        <h3>
-          Nosso propósito
-        </h3>
-        <p>
-          Transformar necessidades reais em soluções digitais úteis. Por meio de e-commerces, landing pages, pequenos sistemas e automações, buscamos ajudar negócios a fortalecer sua presença na internet, facilitar tarefas do dia a dia e criar novas oportunidades de venda.
+          A Vertex Digital nasceu do sonho de empreender e da vontade de ajudar
+          empresas e pequenos negócios a resolver problemas com a tecnologia.
         </p>
         <p>
-          Acreditamos que a tecnologia deve fazer sentido para quem a utiliza. Por isso, nosso ponto de partida é entender cada negócio e propor soluções de acordo com suas necessidades e seu momento.
+          Nossa história começa com a trajetória do fundador, que reúne
+          experiências em vendas no varejo, gestão de frotas e na área
+          administrativa. A vivência nessas funções trouxe um olhar prático para
+          os desafios de um negócio: atender bem, organizar processos, otimizar
+          o tempo e encontrar oportunidades de crescimento.
         </p>
-        <h3>
-          Nossa visão
-        </h3>
         <p>
-          Ser uma parceira de confiança para empresas e pequenos empreendedores que desejam crescer com o apoio da tecnologia. Queremos construir uma empresa reconhecida pela proximidade com os clientes, pela clareza no atendimento e pela capacidade de transformar problemas em soluções práticas.
+          O desejo de construir algo próprio sempre esteve presente. Antes da
+          Vertex, vieram as experiências com a venda de roupas e semijoias no
+          digital, além do aprendizado em gestão de sites, campanhas de tráfego
+          pago e SEO. Em 2026, essa trajetória deu origem à Vertex Digital,
+          unindo experiência em negócios e conhecimento digital para atender
+          outros empreendedores.
+        </p>
+        <h3>Nosso propósito</h3>
+        <p>
+          Transformar necessidades reais em soluções digitais úteis. Por meio de
+          e-commerces, landing pages, pequenos sistemas e automações, buscamos
+          ajudar negócios a fortalecer sua presença na internet, facilitar
+          tarefas do dia a dia e criar novas oportunidades de venda.
+        </p>
+        <p>
+          Acreditamos que a tecnologia deve fazer sentido para quem a utiliza.
+          Por isso, nosso ponto de partida é entender cada negócio e propor
+          soluções de acordo com suas necessidades e seu momento.
+        </p>
+        <h3>Nossa visão</h3>
+        <p>
+          Ser uma parceira de confiança para empresas e pequenos empreendedores
+          que desejam crescer com o apoio da tecnologia. Queremos construir uma
+          empresa reconhecida pela proximidade com os clientes, pela clareza no
+          atendimento e pela capacidade de transformar problemas em soluções
+          práticas.
         </p>
       </div>
-
     </section>
-    
+
     <section class="container-servicos">
-        <div class="container-perguntas-texto">
-          <h2 id="service" class="title-servicos title-perguntas">
-            Perguntas Frequentes
-          </h2>
-        </div>
-    
+      <div class="container-perguntas-texto">
+        <h2 id="perguntas-frequentes" class="title-servicos title-perguntas">
+          Perguntas Frequentes
+        </h2>
+      </div>
     </section>
     <section class="conteiner-perguntas">
-        <details class="div-perguntas">
-          <summary>O que a Vertex Digital faz?</summary>
-          <p>
-            Ajudamos empresas a fortalecer sua presença digital com soluções alinhadas aos seus objetivos. 
-            Entre em contato para conhecer nossos serviços e descobrir como podemos apoiar seu negócio.
-          </p>
-        </details>
-        <details class="div-perguntas">
-          <summary>Como saber qual solução minha empresa precisa?</summary>
-          <p>
-            Tudo começa com uma conversa sobre seu negócio, seus desafios e o que você deseja alcançar. Assim, podemos entender suas prioridades e indicar os próximos passos.
-          </p>
-        </details>
-        <details class="div-perguntas">
-          <summary>A Vertex Digital atende empresas de qualquer segmento?</summary>
-          <p>
-            Cada negócio tem necessidades específicas. Fale com nossa equipe para avaliarmos seu projeto e como podemos contribuir.
-          </p>
-        </details>
-        <details class="div-perguntas">
-          <summary>Como funciona o orçamento?</summary>
-          <p>
-            O orçamento considera o escopo, a complexidade e as necessidades do projeto. Entre em contato e conte o que você precisa para receber uma proposta personalizada.
-          </p>
-        </details>
-        <details class="div-perguntas">
-          <summary>Qual é o prazo de entrega?</summary>
-          <p>
-            O prazo depende do escopo e das etapas do projeto. O cronograma é definido durante a elaboração da proposta, para que você saiba o que esperar.
-          </p>
-        </details>
-        <details class="div-perguntas">
-          <summary>Posso contratar um serviço para um projeto que já existe?</summary>
-          <p>
-            Conte para nós o que você já tem e o que deseja melhorar. Avaliaremos as possibilidades para definir a melhor forma de ajudar.
-          </p>
-        </details>
-        <details class="div-perguntas">
-          <summary>Como começar um projeto com a Vertex Digital?</summary>
-          <p>
-            Entre em contato pelo canal disponível no site. Conte um pouco sobre sua empresa e sua ideia para iniciarmos a conversa.
-          </p>
-        </details>
-        <details class="div-perguntas">
-          <summary>Como o SEO ajuda meu site a aparecer no Google?</summary>
-          <p>
-            SEO é o conjunto de práticas que facilita a compreensão do seu site pelos mecanismos de busca. Envolve conteúdo útil, organização das páginas, desempenho e outros fatores que podem contribuir para melhorar a visibilidade nas pesquisas.
-          </p>
-        </details>
-        <details class="div-perguntas">
-          <summary>Qual é a importância de um site profissional?</summary>
-          <p>
-            Um site profissional apresenta sua empresa, reúne informações sobre seus serviços e facilita o contato com possíveis clientes. Com uma estrutura clara e conteúdo relevante, também pode apoiar sua presença nas buscas do Google.
-        </details>
+      <details class="div-perguntas">
+        <summary>O que a Vertex Digital faz?</summary>
+        <p>
+          Ajudamos empresas a fortalecer sua presença digital com soluções
+          alinhadas aos seus objetivos. Entre em contato para conhecer nossos
+          serviços e descobrir como podemos apoiar seu negócio.
+        </p>
+      </details>
+      <details class="div-perguntas">
+        <summary>Como saber qual solução minha empresa precisa?</summary>
+        <p>
+          Tudo começa com uma conversa sobre seu negócio, seus desafios e o que
+          você deseja alcançar. Assim, podemos entender suas prioridades e
+          indicar os próximos passos.
+        </p>
+      </details>
+      <details class="div-perguntas">
+        <summary>
+          A Vertex Digital atende empresas de qualquer segmento?
+        </summary>
+        <p>
+          Cada negócio tem necessidades específicas. Fale com nossa equipe para
+          avaliarmos seu projeto e como podemos contribuir.
+        </p>
+      </details>
+      <details class="div-perguntas">
+        <summary>Como funciona o orçamento?</summary>
+        <p>
+          O orçamento considera o escopo, a complexidade e as necessidades do
+          projeto. Entre em contato e conte o que você precisa para receber uma
+          proposta personalizada.
+        </p>
+      </details>
+      <details class="div-perguntas">
+        <summary>Qual é o prazo de entrega?</summary>
+        <p>
+          O prazo depende do escopo e das etapas do projeto. O cronograma é
+          definido durante a elaboração da proposta, para que você saiba o que
+          esperar.
+        </p>
+      </details>
+      <details class="div-perguntas">
+        <summary>
+          Posso contratar um serviço para um projeto que já existe?
+        </summary>
+        <p>
+          Conte para nós o que você já tem e o que deseja melhorar. Avaliaremos
+          as possibilidades para definir a melhor forma de ajudar.
+        </p>
+      </details>
+      <details class="div-perguntas">
+        <summary>Como começar um projeto com a Vertex Digital?</summary>
+        <p>
+          Entre em contato pelo canal disponível no site. Conte um pouco sobre
+          sua empresa e sua ideia para iniciarmos a conversa.
+        </p>
+      </details>
+      <details class="div-perguntas">
+        <summary>Como o SEO ajuda meu site a aparecer no Google?</summary>
+        <p>
+          SEO é o conjunto de práticas que facilita a compreensão do seu site
+          pelos mecanismos de busca. Envolve conteúdo útil, organização das
+          páginas, desempenho e outros fatores que podem contribuir para
+          melhorar a visibilidade nas pesquisas.
+        </p>
+      </details>
+      <details class="div-perguntas">
+        <summary>Qual é a importância de um site profissional?</summary>
+        <p>
+          Um site profissional apresenta sua empresa, reúne informações sobre
+          seus serviços e facilita o contato com possíveis clientes. Com uma
+          estrutura clara e conteúdo relevante, também pode apoiar sua presença
+          nas buscas do Google.
+        </p>
+      </details>
     </section>
     <section class="container-contact">
       <h3 class="title-contact">Fale com a Vertex</h3>
@@ -313,26 +390,51 @@
         Conte o que você precisa e nossa equipe entrará em contato.
       </p>
     </section>
-    <section class="container-form">
-      <form action="frankdias06@gmail.com" id="form" class="form">
+    <section id="contact" class="container-form">
+      <form
+        action="https://formspree.io/f/xaeelaeq"
+        method="POST"
+        id="form"
+        class="form"
+      >
         <div class="div-f">
-          <label name="name" for="name">Nome:</label>
-          <input name="name" type="text" placeholder="Qual seu nome.." required />
+          <label for="name">Nome:</label>
+          <input
+            id="name"
+            name="name"
+            type="text"
+            placeholder="Qual seu nome.."
+            required
+          />
         </div>
         <div class="div-f">
-          <label name="email" for="email">E-mail</label>
-          <input name="email" type="email" placeholder="Qual seu melhor e-mail.." required />
+          <label for="email">E-mail</label>
+          <input
+            id="email"
+            name="email"
+            type="email"
+            placeholder="Qual seu melhor e-mail.."
+            required
+          />
         </div>
         <div class="div-f">
-          <label for="tel">WhatsApp/ telefone</label>
-          <input type="tel" placeholder="Qual seu melhor telefone.." name="whatsApp" required />
+          <label for="whatsApp">WhatsApp/ telefone</label>
+          <input
+            id="whatsApp"
+            type="tel"
+            placeholder="Qual seu melhor telefone.."
+            name="whatsApp"
+            required
+          />
         </div>
         <div class="div-f">
-          <label name="assunto" for="assunto" required>Assunto</label>
-          <select id="assunto" name="assunto" required>
+          <label for="assunto" required>Assunto</label>
+          <select id="assunto" name="assunto">
             <option value="">Selecione</option>
             <option value="Quero um orçamento">Quero um orçamento</option>
-            <option value="Duvida Sobre um serviço">Duvida Sobre um serviço</option>
+            <option value="Duvida Sobre um serviço">
+              Duvida Sobre um serviço
+            </option>
             <option value="Suporte">Suporte</option>
             <option value="Parceria">Parceria</option>
             <option value="Outros Assuntos">Outros</option>
@@ -353,20 +455,21 @@
             >Concordo em ser contatado pela Vertex sobre esta mensagem. *</span
           >
         </label>
-        <div id="formbtn" class="div-btn">
-          <button onclick="form" id="formbtn" type="submit" class="btn-form">Enviar</button>
+        <div class="div-btn">
+          <button id="formbtn" type="submit" class="btn-form">Enviar</button>
           <p id="status"></p>
         </div>
       </form>
-     
+    </section>
+
     <footer class="rodape">
       <section class="container-inst">
         <h4>Institucional</h4>
         <ul class="container-list-footer">
-          <li><a href="#">Home</a></li>
-          <li><a href="#">Sobre Nós</a></li>
+          <li><a href="/index.html">Home</a></li>
+          <li><a href="#quem-somos">Sobre Nós</a></li>
           <li><a href="#">Projetos</a></li>
-          <li><a href="#">Contato</a></li>
+          <li><a href="#contact">Contato</a></li>
         </ul>
       </section>
       <section class="container-sobre">
@@ -407,8 +510,12 @@
                 d="M8 8a2 2 0 1 1 0-4 2 2 0 0 1 0 4m0 1a3 3 0 1 0 0-6 3 3 0 0 0 0 6"
               />
             </svg>
-            <a class="address" href="#"
-              >Rua: Zeca Filgueiras, 411 - Nossa Senhora das Graças, Patos de
+            <a
+              class="address"
+              href="https://maps.app.goo.gl/6UyYFaQgo9A4334Q6"
+              target="_blank"
+              rel="noopener noreferrer"
+              >Rua: Zeca Filgueiras, 407 - Nossa Senhora das Graças, Patos de
               Minas</a
             >
           </li>
@@ -426,7 +533,12 @@
                 d="M13.601 2.326A7.85 7.85 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.9 7.9 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.9 7.9 0 0 0 13.6 2.326zM7.994 14.521a6.6 6.6 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.56 6.56 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592m3.615-4.934c-.197-.099-1.17-.578-1.353-.646-.182-.065-.315-.099-.445.099-.133.197-.513.646-.627.775-.114.133-.232.148-.43.05-.197-.1-.836-.308-1.592-.985-.59-.525-.985-1.175-1.103-1.372-.114-.198-.011-.304.088-.403.087-.088.197-.232.296-.346.1-.114.133-.198.198-.33.065-.134.034-.248-.015-.347-.05-.099-.445-1.076-.612-1.47-.16-.389-.323-.335-.445-.34-.114-.007-.247-.007-.38-.007a.73.73 0 0 0-.529.247c-.182.198-.691.677-.691 1.654s.71 1.916.81 2.049c.098.133 1.394 2.132 3.383 2.992.47.205.84.326 1.129.418.475.152.904.129 1.246.08.38-.058 1.171-.48 1.338-.943.164-.464.164-.86.114-.943-.049-.084-.182-.133-.38-.232"
               />
             </svg>
-            <a href="#">(31)998946231</a>
+            <a
+              href="https://wa.me/+5531998946231?text=Ol%C3%A1,%20gostaria%20de%20tirar%20algumas%20duvidas?"
+              target="_blank"
+              rel="noopener noreferrer"
+              >(31)998946231</a
+            >
           </li>
           <li class="container-email">
             <svg
@@ -445,7 +557,7 @@
                 d="M14.247 14.269c1.01 0 1.587-.857 1.587-2.025v-.21C15.834 10.43 14.64 9 12.52 9h-.035C10.42 9 9 10.36 9 12.432v.214C9 14.82 10.438 16 12.358 16h.044c.594 0 1.018-.074 1.237-.175v-.73c-.245.11-.673.18-1.18.18h-.044c-1.334 0-2.571-.788-2.571-2.655v-.157c0-1.657 1.058-2.724 2.64-2.724h.04c1.535 0 2.484 1.05 2.484 2.326v.118c0 .975-.324 1.39-.639 1.39-.232 0-.41-.148-.41-.42v-2.19h-.906v.569h-.03c-.084-.298-.368-.63-.954-.63-.778 0-1.259.555-1.259 1.4v.528c0 .892.49 1.434 1.26 1.434.471 0 .896-.227 1.014-.643h.043c.118.42.617.648 1.12.648m-2.453-1.588v-.227c0-.546.227-.791.573-.791.297 0 .572.192.572.708v.367c0 .573-.253.744-.564.744-.354 0-.581-.215-.581-.8Z"
               />
             </svg>
-            <a href="#">frankdias06@gmail.com</a>
+            <a href="mailto:frankdias06@gmail.com">frankdias06@gmail.com</a>
           </li>
         </ul>
         <div class="container-social">

@@ -1,21 +1,29 @@
 const form = document.getElementById("form");
-const status = document.getElementById("status");
+const statusMsg = document.getElementById("status");
+const botao = form.querySelector('button[type="submit"]');
 
-form.addEventListener("submit", (evento) => {
+form.addEventListener("submit", async (evento) => {
   evento.preventDefault();
+  botao.disabled = true;
+  statusMsg.textContent = "Enviando...";
 
-  const dados = new FormData(form);
+  try {
+    const resposta = await fetch("https://formspree.io/f/xaeelaeq", {
+      method: "POST",
+      body: new FormData(form),
+      headers: { Accept: "application/json" },
+    });
 
-  const mensagem =
-    `Nome: ${dados.get("name")}\n` +
-    `E-mail: ${dados.get("email")}\n\n` +
-    `WhatsApp: ${dados.get("whatsApp")}\n\n` +
-    `Mensagem:\n${dados.get("mensagem")}`;
+    if (!resposta.ok) throw new Error("Falha no envio");
 
-  const assunto = encodeURIComponent(dados.get("assunto"));
-  const corpo = encodeURIComponent(mensagem);
-
-  window.location.href = `mailto:frankdias06@gmail.com?subject=${assunto}&body=${corpo}`;
-
-  status.textContent = "Finalize o envio no aplicativo de e-mail que abrir.";
+    form.reset();
+    statusMsg.textContent = "Mensagem enviada! Responderemos em breve.";
+  } catch (erro) {
+    statusMsg.textContent =
+      "Não foi possível enviar. Fale conosco pelo WhatsApp ou e-mail.";
+  } finally {
+    botao.disabled = false;
+  }
 });
+
+
