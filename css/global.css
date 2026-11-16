@@ -1,8 +1,9 @@
 @import './styles.css';
 @import "./hero-header.css?v=5";
 @import "./service.css";
-@import "./work.css";
+@import "./work.css?v=5";
 @import "./form.css";
 @import "./footer.css";
 @import "./perguntas.css";
 @import "./quemSomos.css";
+@import "./project.css";

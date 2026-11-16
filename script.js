@@ -187,26 +187,9 @@ mm.add(
     const serviceCards = gsap.utils.toArray(".container-itens", grid);
     const header = document.querySelector(".container-header");
     const topOffset = () => (header?.offsetHeight || 0) + 16;
-    if (mobile) {
-      // O empilhamento nativo preserva o espaco das secoes seguintes.
-      const updateStackOffset = () => {
-        viewport.style.setProperty("--service-stack-top", `${topOffset()}px`);
-      };
-      viewport.classList.add("is-stacked");
-      updateStackOffset();
-      window.addEventListener("resize", updateStackOffset);
-      serviceCards.forEach((card, index) => {
-        gsap.set(card, { zIndex: index + 1 });
-      });
-      return () => {
-        window.removeEventListener("resize", updateStackOffset);
-        viewport.classList.remove("is-stacked");
-        viewport.style.removeProperty("--service-stack-top");
-      };
-    }
     const measure = () => {
       if (mobile) {
-        viewport.style.setProperty("--service-card-height", `${Math.max(1, window.innerHeight - topOffset() - 40)}px`);
+        viewport.style.setProperty("--service-card-height", `${Math.max(...serviceCards.map(card => card.offsetHeight))}px`);
       }
       viewport.style.height = `${Math.min(grid.offsetHeight, Math.max(1, window.innerHeight - topOffset() - 16))}px`;
     };
@@ -220,10 +203,10 @@ mm.add(
       scrollTrigger: {
         trigger: viewport,
         start: () => `top ${topOffset()}px`,
-        end: () => `+=${mobile ? window.innerHeight * (serviceCards.length - 1) * 0.85 : distance() * 1.25 + window.innerHeight * 1.3}`,
+        end: () => `+=${window.innerHeight * serviceCards.length * 0.9 + distance()}`,
         pin: true,
         pinSpacing: true,
-        scrub: 0.8,
+        scrub: 1.2,
         anticipatePin: 1,
         refreshPriority: 1,
         invalidateOnRefresh: true,
@@ -231,41 +214,31 @@ mm.add(
       },
     });
 
-    if (mobile) {
-      serviceCards.forEach((card, index) => {
-        gsap.set(card, { zIndex: index + 1 });
-        if (index === 0) return;
+    serviceCards.forEach((card, index) => {
+      const position = index * 1.5;
+      if (mobile) gsap.set(card, { zIndex: index + 1 });
+      servicesTimeline.fromTo(card, {
+        // No celular, o fundo opaco cobre o anterior sem misturar os textos.
+        autoAlpha: mobile ? 1 : 0,
+        y: () => mobile ? viewport.clientHeight + 24 : 28,
+      }, {
+        autoAlpha: 1,
+        y: 0,
+        duration: 1.2,
+        ease: "power1.inOut",
+      }, position);
 
-        const position = index - 1;
-        servicesTimeline.fromTo(card, {
-          y: () => viewport.clientHeight + 32,
-        }, {
-          y: 0,
+      // Acompanha a linha atual quando a grade nao cabe na tela.
+      if (!mobile) {
+        servicesTimeline.to(grid, {
+          y: () => -Math.min(distance(), Math.max(0, card.offsetTop - serviceCards[0].offsetTop)),
           duration: 1,
           ease: "power1.inOut",
         }, position);
-        servicesTimeline.to(serviceCards[index - 1], {
-          scale: 0.95,
-          y: -8,
-          duration: 1,
-          ease: "power1.inOut",
-        }, position);
-      });
-    } else {
-      servicesTimeline.from(serviceCards, {
-      autoAlpha: 0,
-      stagger: 0.12,
-      duration: 0.8,
-      ease: "power1.inOut",
+      }
     });
-    servicesTimeline.to(grid, {
-      y: () => -distance(),
-      duration: () => Math.max(1, distance() / window.innerHeight * 2),
-      ease: "none",
-    });
-    }
     // Reserva um trecho para ler o ultimo card antes de liberar a pagina.
-    servicesTimeline.to({}, { duration: 0.4 });
+    servicesTimeline.to({}, { duration: 0.6 });
 
     document.fonts.ready.then(() => ScrollTrigger.refresh());
     window.addEventListener("load", () => ScrollTrigger.refresh(), { once: true });
@@ -281,30 +254,29 @@ mm.add(
 
 gsap.registerPlugin(ScrollTrigger);
 
-mm.add("(min-width: 769px) and (prefers-reduced-motion: no-preference)", () => {
+mm.add({
+  motion: "(prefers-reduced-motion: no-preference)",
+  mobile: "(max-width: 768px)",
+}, (context) => {
+if (!context.conditions.motion) return;
+const { mobile } = context.conditions;
 const secao = document.querySelector(".etapas");
+if (!secao) return;
 const cards = gsap.utils.toArray(".etapa", secao);
+const header = document.querySelector(".container-header");
+const grid = secao.querySelector(".grid-etapas");
+const topOffset = () => mobile ? (header?.offsetHeight || 0) + 16 : 160;
+if (mobile) secao.classList.add("is-pinned-steps");
+const overflow = () => mobile
+  ? Math.max(0, secao.offsetHeight + topOffset() + 24 - window.innerHeight)
+  : 0;
 
-const timeline = gsap.timeline({
-  scrollTrigger: {
-    trigger: secao,
-    start: "top 160px",
-
-    // Distância de rolagem reservada para a animação
-    end: () => `+=${window.innerHeight * 1.9}`,
-
-    pin: true,
-    pinSpacing: true,
-    scrub: true,
-    invalidateOnRefresh: true,
-  },
-});
-
+const timeline = gsap.timeline();
 timeline.fromTo(
   cards,
   {
     autoAlpha: 0,
-    y: 60,
+    y: mobile ? 24 : 60,
   },
   {
     autoAlpha: 1,
@@ -315,8 +287,28 @@ timeline.fromTo(
   },
 );
 
+// Em telas baixas, permite ler o final sem esconder as etapas ja reveladas.
+if (mobile) {
+  timeline.to(grid, { y: () => -overflow(), duration: 0.8, ease: "none" });
+}
+
 // Mantém todos visíveis por um trecho antes de liberar a seção
 timeline.to({}, { duration: 0.3 });
+ScrollTrigger.create({
+  animation: timeline,
+  trigger: secao,
+  start: () => `top ${topOffset()}px`,
+  end: () => `+=${window.innerHeight * (mobile ? 2.4 : 1.9) + overflow()}`,
+  pin: true,
+  pinSpacing: true,
+  scrub: true,
+  anticipatePin: 1,
+  invalidateOnRefresh: true,
+});
+document.fonts.ready.then(() => {
+  if (timeline.scrollTrigger) timeline.scrollTrigger.refresh();
+});
+return () => secao.classList.remove("is-pinned-steps");
 });
 
 document.querySelectorAll(".fa-brands").forEach((icon) =>{
