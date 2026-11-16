@@ -1,0 +1,122 @@
+.container-projetos {
+  width: 100%;
+  margin: 0 auto;
+  overflow: hidden;
+  max-width: 900px;
+}
+
+.trilho {
+  position: relative;
+  display: flex;
+  gap: 20px;
+}
+
+.card {
+  flex: 0 0 100%;
+  min-width: 0;
+  box-sizing: border-box;
+  position: relative;
+  display: flex;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  border-radius: 8px;
+  background: var(--primaria);
+}
+
+.card:hover {
+  border: 3px solid var(--secundaria);
+}
+
+.img-projeto {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.42),
+    rgba(4, 10, 20, 0.55) 60%,
+    rgba(4, 10, 20, 0.99)
+  );
+}
+.card-texto {
+  position: absolute;
+  bottom: 8%;
+  left: 4%;
+  right: 20%;
+  z-index: 1;
+  color: var(--text-color);
+}
+
+.card-texto h2 {
+  margin: 0 0 20px;
+  font-size: clamp(14px, 4vw, 50px);
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.card-texto a {
+  color: var(--text-color);
+  text-underline-offset: 4px;
+}
+
+.link-project:hover {
+  text-decoration: underline #7c3aed;
+}
+
+.card:hover {
+  transform: scale(1.03);
+  transition: transform 0.3s ease-in-out;
+}
+
+@media (max-width: 768px) {
+  @media (max-width: 700px) {
+  .container-projetos .trilho {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 0;
+    overflow: hidden;
+    isolation: isolate;
+  }
+
+  .container-projetos .trilho > .card {
+    grid-area: 1 / 1;
+    position: relative;
+    width: 100%;
+    min-width: 0;
+    margin: 0;
+    background-color: #111827;
+  }
+
+  .container-projetos .card,
+  .container-projetos .card:hover {
+    transform: none;
+    transition: none;
+  }
+}
+  .card-texto {
+    position: absolute;
+    bottom: 8%;
+    left: 4%;
+    right: 20%;
+    z-index: 1;
+    color: var(--text-color);
+  }
+
+  .card::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      to bottom,
+      rgba(0, 0, 0, 0.42),
+      rgba(4, 10, 20, 0.55) 60%,
+      rgba(4, 10, 20, 0.99)
+    );
+  }
+
+}

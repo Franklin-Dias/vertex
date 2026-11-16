@@ -42,10 +42,7 @@
   padding: 30px;
   border-radius: 10px;
   gap: 20px;
-  transition:
-    background-color 0.5s,
-    transform 0.5s,
-    box-shadow 0.3s;
+  box-shadow: none;
 }
 
 .servicos-viewport.is-pinned {
@@ -71,18 +68,26 @@
   width: 100%;
   margin: 0 0 32px;
   transform-origin: center top;
-  transition: box-shadow 0.3s;
-  box-shadow: 0 -4px 24px rgb(0 0 0 / 20%);
+  box-shadow: none;
 }
 
 .servicos-viewport.is-stacked .container-itens:hover {
   background: linear-gradient(180deg, var(--secundaria), var(--terceira));
 }
 
+.servicos-viewport.is-pinned.is-stacked .container-servicos-itens {
+  position: relative;
+  height: calc(var(--service-card-height) + 24px);
+}
+
+.servicos-viewport.is-pinned.is-stacked .container-itens {
+  position: absolute;
+  top: 12px;
+  margin: 0;
+}
+
 .container-itens:hover {
-  background: transparent;
-  transform: translateY(-6px);
-  box-shadow: 0px 3px 10px #7c3aed;
+  box-shadow: none;
 }
 
 .svg-img {
@@ -91,7 +96,7 @@
   width: 70px;
   margin-bottom: 20px;
   border: none;
-  box-shadow: 5px 0px 8px rgba(17, 24, 39, 0.27);
+  box-shadow: none;
 }
 
 .container-itens h3 {
